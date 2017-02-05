@@ -1,1 +1,19 @@
-{ }
+{
+    "filesGlob": [
+        "**/*.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    },
+    "compilerOptions": {},
+    "files": [
+        "app.ts",
+        "client/client.ts",
+        "controllers/readingsController.ts",
+        "messages/message.ts",
+        "node_modules/iconv-lite/lib/index.d.ts",
+        "node_modules/tweetnacl/nacl.d.ts",
+        "typings/index.d.ts",
+        "typings/modules/express/index.d.ts"
+    ]
+}

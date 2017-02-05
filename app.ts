@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", function(req, res) {
     res.send('This is some gateway.')
-}); 
+});
 
 app.post("/postreadings", function(req, res) {
     ReadingController.postReadings(req, res);

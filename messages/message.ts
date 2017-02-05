@@ -12,7 +12,7 @@ interface IMsg {
     getRecognizedError(): string;
 }
 
-export class Msg implements IMsg {
+class Msg implements IMsg {
     constructor(msg: IMsg) {
         if (!msg.msgId) {
             this._recognized = false;
