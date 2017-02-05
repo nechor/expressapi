@@ -8,21 +8,43 @@ interface IMsg {
     msgId: number;
     msgAuth: IMsgAuth;
     msgBody: Object;
+    getRecognized(): boolean;
+    getRecognizedError(): string;
 }
 
 export class Msg implements IMsg {
-    msgId: number = 0;
-    msgAuth: IMsgAuth;
-    msgBody: Object;
-}
-
-export class ReadingsMsg implements IMsg {
     constructor(msg: IMsg) {
-        this.msgId = msg.msgId;
-        this.msgAuth = msg.msgAuth;
-        this.msgBody = msg.msgBody;
+        if (!msg.msgId) {
+            this._recognized = false;
+            this._recognizedError = "No message ID. "
+        }
+
+        if (this.isRecognized()) {
+            this.msgId = msg.msgId;
+            this.msgAuth = msg.msgAuth;
+            this.msgBody = msg.msgBody;
+        }
+        else {
+            console.log(this.getRecognizedError());
+        }
     }
+
     msgId: number;
     msgAuth: IMsgAuth;
     msgBody: Object;
+
+    protected _recognized: boolean = true;
+    protected _recognizedError: string = "";
+    isRecognized(): boolean {
+        return this._recognized;
+    }
+    getRecognizedError(): string {
+        return this._recognizedError;
+    };
+}
+
+export class ReadingsMsg extends Msg {
+    constructor(msg: IMsg) {
+        super(msg);
+    }
 }
