@@ -8,7 +8,7 @@ interface IMsg {
     msgId: number;
     msgAuth: IMsgAuth;
     msgBody: Object;
-    getRecognized(): boolean;
+    isRecognized(): boolean;
     getRecognizedError(): string;
 }
 
