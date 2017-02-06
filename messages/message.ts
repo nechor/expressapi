@@ -8,24 +8,24 @@ interface IMsg {
     msgId: number;
     msgAuth: IMsgAuth;
     msgBody: Object;
-    isRecognized(): boolean;
-    getRecognizedError(): string;
+    isconfirmed(): boolean;
+    getconfirmedError(): string;
 }
 
 class Msg implements IMsg {
     constructor(msg: IMsg) {
         if (!msg.msgId) {
-            this._recognized = false;
-            this._recognizedError = "No message ID. "
+            this._confirmed = false;
+            this._confirmedError = "No message ID. "
         }
 
-        if (this.isRecognized()) {
+        if (this.isconfirmed()) {
             this.msgId = msg.msgId;
             this.msgAuth = msg.msgAuth;
             this.msgBody = msg.msgBody;
         }
         else {
-            console.log(this.getRecognizedError());
+            console.log(this.getconfirmedError());
         }
     }
 
@@ -33,13 +33,13 @@ class Msg implements IMsg {
     msgAuth: IMsgAuth;
     msgBody: Object;
 
-    protected _recognized: boolean = true;
-    protected _recognizedError: string = "";
-    isRecognized(): boolean {
-        return this._recognized;
+    protected _confirmed: boolean = true;
+    protected _confirmedError: string = "";
+    isconfirmed(): boolean {
+        return this._confirmed;
     }
-    getRecognizedError(): string {
-        return this._recognizedError;
+    getconfirmedError(): string {
+        return this._confirmedError;
     };
 }
 
